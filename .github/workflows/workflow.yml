@@ -30,7 +30,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/so-test
+          images: ghcr.io/terisikk/so-test
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
