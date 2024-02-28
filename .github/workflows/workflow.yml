@@ -41,5 +41,4 @@ jobs:
           context: .
           push: true
           tags: "latest"            
-          build-args: |
-            SSH_PRIVATE_KEY="$TEST_KEY"
+          build-args: SSH_PRIVATE_KEY="$TEST_KEY"
