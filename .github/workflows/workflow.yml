@@ -12,8 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: read
       packages: write
+
+    env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
 
     steps:
       - name: Checkout repository
@@ -37,6 +39,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: "latest"
+          tags: "latest"            
           build-args: |
-            SSH_PRIVATE_KEY="${{ secrets.SSH_KEY }}"
+            SSH_PRIVATE_KEY=${SSH_PRIVATE_KEY}
