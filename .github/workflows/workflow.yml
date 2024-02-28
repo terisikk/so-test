@@ -32,9 +32,6 @@ jobs:
         with:
           images: ghcr.io/terisikk/so-test
 
-      - name: Store env var to file
-        run: echo "${{ secrets.SSH_KEY }}" > ssh_key.txt
-
       - name: Build and push Docker image
 
         uses: docker/build-push-action@v5
@@ -43,4 +40,4 @@ jobs:
           push: true
           tags: "latest"            
           build-args: |
-            "SSH_PRIVATE_KEY=${{secrets.SSH_KEY}}"
+            SSH_PRIVATE_KEY=${{secrets.SSH_KEY}}
