@@ -15,7 +15,7 @@ jobs:
       packages: write
 
     env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+        TEST_KEY: ${{ secrets.SSH_KEY }}
 
     steps:
       - name: Checkout repository
@@ -41,4 +41,4 @@ jobs:
           push: true
           tags: "latest"            
           build-args: |
-            SSH_PRIVATE_KEY=${SSH_PRIVATE_KEY}
+            SSH_PRIVATE_KEY=${TEST_KEY}
