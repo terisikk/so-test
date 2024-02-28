@@ -15,9 +15,6 @@ jobs:
       contents: read
       packages: write
 
-    env:
-        TEST_KEY: ${{ secrets.SSH_KEY }}
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -41,4 +38,6 @@ jobs:
           context: .
           push: true
           tags: "latest"            
-          build-args: SSH_PRIVATE_KEY="$INPUT_TEST_KEY"
+          build-args: |
+            SSH_PRIVATE_KEY= |
+              ${{ secrets.SSH_KEY }}
