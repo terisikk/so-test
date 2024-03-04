@@ -19,5 +19,5 @@ jobs:
         python-version: '3.11'
     - name: Run Python script
       env:
-        MONGO_USER: "test_user"
+        MONGO_USER: ${{ secrets.MONGO_USER }}
       run: python test.py
