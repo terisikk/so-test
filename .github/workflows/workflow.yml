@@ -7,6 +7,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      MONGO_USER: ${{ secrets.MONGO_USER }}
+
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
@@ -15,10 +18,7 @@ jobs:
         python-version: '3.11'
     - name: Testing Secrets
       run: |
-        echo "MONGO USER: $MONGO_USER"
         echo "$MONGO_USER"
-      env:
-        MONGO_USER: ${{ secrets.MONGO_USER }}
 
     - name: Run Python script
       run: python test.py
