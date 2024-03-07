@@ -20,14 +20,12 @@ jobs:
     steps:
       - name: Echo debug
         run: |
-          echo ${{ needs.build.outputs.status }}
-          echo ${{ needs.build.outputs.result }}
           echo ${{ needs.build.result }}
 
       - name: Slack Notify Failure
-        if: always() && (contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled'))
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
         run: echo "Failure"
 
       - name: Slack Notify Success
-        if: always() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled')
+        if: !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled')
         run: echo "Success"
