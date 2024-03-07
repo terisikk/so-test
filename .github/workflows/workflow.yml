@@ -6,7 +6,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    continue-on-error: true
 
     steps:
       - name: fails
@@ -16,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     needs: build
+    if: always()
 
     steps:
       - name: Echo debug
