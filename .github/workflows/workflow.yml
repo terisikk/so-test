@@ -6,9 +6,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    fail-fast: false
 
     steps:
       - name: fails
+        run: exit 1
+      - name: fails too
         run: exit 1
 
   notification:
