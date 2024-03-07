@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: passes
-        run: exit 0
+      - name: fails
+        run: exit 1
 
   notification:
     runs-on: ubuntu-latest
@@ -22,9 +22,9 @@ jobs:
         run: echo ${{ needs.build.result }}
 
       - name: Slack Notify Failure
-        if: ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') }}
+        if: ${{ contains(['cancelled', 'failure'], needs.*.result) }}
         run: echo "Failure"
 
       - name: Slack Notify Success
-        if: ${{ !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') }}
+        if: ${{ !contains(['cancelled', 'failure'], needs.*.result) }}
         run: echo "Success"
