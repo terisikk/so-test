@@ -25,9 +25,9 @@ jobs:
         run: echo ${{ needs.build.result }}
 
       - name: Slack Notify Failure
-        if: ${{ contains(("cancelled" "failure"), needs.*.result) }}
+        if: ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') }}
         run: echo "Failure"
 
       - name: Slack Notify Success
-        if: ${{ !contains(("cancelled" "failure"), needs.*.result) }}
+        if: ${{ !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') }}
         run: echo "Success"
