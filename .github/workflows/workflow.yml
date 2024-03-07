@@ -8,12 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      matrix:
+        build-result: [1, 0]
 
     steps:
-      - name: fails
-        run: exit 1
-      - name: fails too
-        run: exit 1
+      - name: matrix
+        run: exit ${{ matrix.build-result }}
 
   notification:
     runs-on: ubuntu-latest
