@@ -7,18 +7,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    env:
-      MONGO_USER: ${{ secrets.MONGO_USER }}
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.11'
-    - name: Testing Secrets
-      run: |
-        echo "$MONGO_USER"
-
-    - name: Run Python script
-      run: python test.py
+      - name: fails
+        if: always() && false
+        run: echo "This is a failure"
+      - name: succeeds
+        if: always() && true
+        run: echo "This is a success"
