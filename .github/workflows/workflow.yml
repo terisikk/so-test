@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: fails
-        run: exit 1
+      - name: passes
+        run: exit 0
 
   notification:
     runs-on: ubuntu-latest
