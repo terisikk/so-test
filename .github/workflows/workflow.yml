@@ -1,34 +1,26 @@
-name: Docker Image
+name: Continuous Delivery
+
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
-  build:
+  integration-tests:
+    permissions:
+      id-token: write # Important for at least docker gha cache
+      contents: read
+
+    name: "Run integration tests"
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        build-result: [1, 0]
-
     steps:
-      - name: matrix
-        run: exit ${{ matrix.build-result }}
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Build docker images
+        # https://stackoverflow.com/a/74795460/6845813
+        run: |
+          export ACTIONS_CACHE_URL=$(echo "$ACTIONS_ID_TOKEN_REQUEST_URL" | grep -Po 'https://[^/]+/[^/]+/' | sed 's/pipelines/artifactcache/')
+          export ACTIONS_RUNTIME_TOKEN=$ACTIONS_ID_TOKEN_REQUEST_TOKEN
 
-  notification:
-    runs-on: ubuntu-latest
-
-    needs: build
-    if: always()
-
-    steps:
-      - name: Echo debug
-        run: echo ${{ needs.build.result }}
-
-      - name: Slack Notify Failure
-        if: ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') }}
-        run: echo "Failure"
-
-      - name: Slack Notify Success
-        if: ${{ !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') }}
-        run: echo "Success"
+          docker buildx build --load --file docker-compose.yml . --cache-to "type=gha,mode=max" --cache-from type=gha
