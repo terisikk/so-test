@@ -2,7 +2,7 @@
     "target": {
       "web": {
         "cache-from": [
-          "type=gha,ref=terisikk/so-test/web"
+          "type=gha,scope=terisikk/so-test/web"
         ],
         "cache-to": [
           "type=gha,mode=max,scope=terisikk/so-test/web"
@@ -13,7 +13,7 @@
       },
       "web2": {
         "cache-from": [
-          "type=gha,ref=terisikk/so-test/web2"
+          "type=gha,scope=terisikk/so-test/web2"
         ],
         "cache-to": [
           "type=gha,mode=max,scope=terisikk/so-test/web2"
