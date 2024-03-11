@@ -26,4 +26,4 @@ jobs:
           export ACTIONS_CACHE_URL=$(echo "$ACTIONS_ID_TOKEN_REQUEST_URL" | grep -Po 'https://[^/]+/[^/]+/' | sed 's/pipelines/artifactcache/')
           export ACTIONS_RUNTIME_TOKEN=$ACTIONS_ID_TOKEN_REQUEST_TOKEN
 
-          docker buildx bake --load --file docker-compose.yml --cache-to "type=gha,mode=max" --cache-from type=gha
+          docker buildx bake --load --file docker-compose.yml --set *.cache-to="type=gha,mode=max" --set *.cache-from="type=gha"
