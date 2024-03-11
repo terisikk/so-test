@@ -5,7 +5,7 @@
           "type=gha,ref=terisikk/so-test/web"
         ],
         "cache-to": [
-          "type=gha,mode=max,ref=terisikk/so-test/web"
+          "type=gha,mode=max,scope=terisikk/so-test/web"
         ],
         "output": [
           "type=docker"
@@ -16,7 +16,7 @@
           "type=gha,ref=terisikk/so-test/web2"
         ],
         "cache-to": [
-          "type=gha,mode=max,ref=terisikk/so-test/web2"
+          "type=gha,mode=max,scope=terisikk/so-test/web2"
         ],
         "output": [
           "type=docker"
