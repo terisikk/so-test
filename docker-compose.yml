@@ -2,4 +2,11 @@ version: "3.8"
 
 services:
   web:
-    build: .
+    build:
+      context: ./service1
+      dockerfile: Dockerfile
+
+  web2:
+    build:
+      context: ./service2
+      dockerfile: Dockerfile
