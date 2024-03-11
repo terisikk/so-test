@@ -25,7 +25,6 @@ jobs:
         with:
           push: false
           load: true
-          set: |
-              *.cache-from=type=gha
-              *.cache-to=type=gha,mode=max
-          files: docker-compose.yml
+          files: |-
+            docker-compose.yml
+            docker-compose-cache.json
