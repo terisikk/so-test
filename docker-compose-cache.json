@@ -1,8 +1,19 @@
 {
     "target": {
-      "service1": {
+      "web": {
         "cache-from": [
           "type=gha,ref=terisikk/so-test/web"
+        ],
+        "cache-to": [
+          "type=gha,mode=max,ref=terisikk/so-test/web"
+        ],
+        "output": [
+          "type=docker"
+        ]
+      },
+      "web2": {
+        "cache-from": [
+          "type=gha,ref=terisikk/so-test/web2"
         ],
         "cache-to": [
           "type=gha,mode=max,ref=terisikk/so-test/web2"
