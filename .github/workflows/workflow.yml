@@ -19,7 +19,7 @@ jobs:
           path: 'bin/test/*.txt'
 
   test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     needs: build
 
@@ -30,4 +30,4 @@ jobs:
           name: test-artifacts
           path: build
 
-      - run: cd ~ && pwd
+      - run: cd ~ && cd
