@@ -30,4 +30,4 @@ jobs:
           name: test-artifacts
           path: build
 
-      - run: cd ~ && ls -lah
+      - run: cd ~ && pwd
