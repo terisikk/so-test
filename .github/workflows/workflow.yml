@@ -6,25 +6,26 @@ on:
       - main
 
 jobs:
-  integration-tests:
-    permissions:
-      id-token: write # Important for at least docker gha cache
-      contents: read
-
-    name: "Run integration tests"
+  build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
 
-      - name: Cache Docker layers
-        uses: docker/bake-action@master
+    steps:
+      - run: mkdir -p bin/test/ && echo "test artifact" > bin/test/test-artifact.txt
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4.3.1
         with:
-          push: false
-          load: true
-          files: |-
-            docker-compose.yml
-            docker-compose-cache.json
+          name: test-artifacts
+          path: '**/bin/test/*.txt'
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4.1.4
+        with:
+          name: test-artifacts
+          path: build
+
+      - run: cat build/test-artifact.txt
