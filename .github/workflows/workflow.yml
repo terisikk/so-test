@@ -16,7 +16,7 @@ jobs:
         uses: actions/upload-artifact@v4.3.1
         with:
           name: test-artifacts
-          path: '**/bin/test/*.txt'
+          path: 'bin/test/*.txt'
 
   test:
     runs-on: ubuntu-latest
