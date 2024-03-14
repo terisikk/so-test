@@ -30,4 +30,4 @@ jobs:
           name: test-artifacts
           path: build
 
-      - run: cat build/test-artifact.txt
+      - run: cd ~ && ls -lah
