@@ -11,9 +11,9 @@ jobs:
 
     steps:
       - run: >- 
-            curl -X POST -v --location "www.example.com/example" \ 
-            -H "Authorization: Api-Token anAPiToken"  \
-            -H "Content-Type: application/json; charset=utf-8" \
+            curl -X POST -v --location "www.example.com/example"
+            -H "Authorization: Api-Token anAPiToken"
+            -H "Content-Type: application/json; charset=utf-8"
             -d '{   "entitySelector": "entityId(SERVICE-8E3722AC3F76B09D)",
                     "eventType": "CUSTOM_DEPLOYMENT",
                     "title": "New Deployment Triggered",  
