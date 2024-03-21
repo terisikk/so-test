@@ -10,24 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: mkdir -p bin/test/ && echo "test artifact" > bin/test/test-artifact.txt
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4.3.1
-        with:
-          name: test-artifacts
-          path: 'bin/test/*.txt'
-
-  test:
-    runs-on: windows-latest
-
-    needs: build
-
-    steps:
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4.1.4
-        with:
-          name: test-artifacts
-          path: build
-
-      - run: cd ~ && cd
+      - run: >- 
+            curl -X POST -v --location "www.example.com/example" \ 
+            -H "Authorization: Api-Token anAPiToken"  \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{   "entitySelector": "entityId(SERVICE-8E3722AC3F76B09D)",
+                    "eventType": "CUSTOM_DEPLOYMENT",
+                    "title": "New Deployment Triggered",  
+                    "properties": { 
+                        "RemediationUrl": "www.example.com/example"
+                    }
+                }' 
