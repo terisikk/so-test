@@ -12,9 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - run: mkdir -p "test" && echo "Hello, World!" > "test/hello.txt"
-        name: Create test file
-
       - name: Check for changes
         id: check_changes
         run: |
