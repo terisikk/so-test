@@ -15,5 +15,5 @@ jobs:
 
     steps:
       - run: echo "test_value=${{ matrix.test }}" >> $GITHUB_ENV
-      - run: echo $test_value
-      - run: echo ${{ env.test_value }}
+      - run: Get-Item Env:test_value
+      - run: Write-Host ${{ env.test_value }}
