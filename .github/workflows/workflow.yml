@@ -9,7 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        test: [1, 2]
+
     steps:
-      - run: echo "test_value=123" >> $GITHUB_ENV
+      - run: echo "test_value=${{ matrix.test }}" >> $GITHUB_ENV
       - run: echo $test_value
       - run: echo ${{ env.test_value }}
