@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Check for changes
         id: check_changes
-        run: echo "::set-output name=changes::true"
+        run: echo "changes=true" >> "$GITHUB_OUTPUT"
 
       - name: Commit and push changes
         if: steps.check_changes.outputs.changes == 'true'
