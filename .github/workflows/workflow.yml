@@ -10,14 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: >- 
-            curl -X POST -v --location "www.example.com/example"
-            -H "Authorization: Api-Token anAPiToken"
-            -H "Content-Type: application/json; charset=utf-8"
-            -d '{   "entitySelector": "entityId(SERVICE-8E3722AC3F76B09D)",\n
-                    "eventType": "CUSTOM_DEPLOYMENT",\n
-                    "title": "New Deployment Triggered",\n  
-                    "properties": { \n
-                        "RemediationUrl": "www.example.com/example"\n
-                    }\n
-                }'
+      - run: echo "test_value=123" >> $GITHUB_ENV
+      - run: echo $test_value
+      - run: echo {{ env.test_value }}
