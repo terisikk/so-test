@@ -7,13 +7,13 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
-
-    strategy:
-      matrix:
-        test: [1, 2]
+    runs-on: ubuntu-latest
 
     steps:
-      - run: echo "test_value=${{ matrix.test }}" >> $env:GITHUB_ENV
-      - run: Get-Item Env:test_value
-      - run: Write-Host ${{ env.test_value }}
+      - name: Check for changes
+        id: check_changes
+        run: echo "::set-output name=changes::true"
+
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changes == 'true'
+        run: echo "Changes detected"
