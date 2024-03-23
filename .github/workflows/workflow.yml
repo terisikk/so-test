@@ -12,4 +12,4 @@ jobs:
     steps:
       - run: echo "test_value=123" >> $GITHUB_ENV
       - run: echo $test_value
-      - run: echo {{ env.test_value }}
+      - run: echo ${{ env.test_value }}
