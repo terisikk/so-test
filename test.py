@@ -6,7 +6,7 @@ env = {
 }
 
 proc = Popen(
-    "python3 test2.py",
+    "cmd /k set > env.txt",
     universal_newlines=True,
     bufsize=0,
     shell=False,
