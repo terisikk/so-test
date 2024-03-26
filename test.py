@@ -6,7 +6,7 @@ env = {
 }
 
 proc = Popen(
-    "set > filename.txt",
+    "cmd /k set > filename.txt",
     universal_newlines=True,
     bufsize=0,
     shell=False,
