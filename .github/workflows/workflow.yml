@@ -14,5 +14,5 @@ jobs:
           Get-ChildItem Env: | Sort Name
       - name: Checkout code
         uses: actions/checkout@v2
-
       - run: python test.py
+      - run: Get-Content -Path env.txt
