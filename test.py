@@ -6,12 +6,11 @@ env = {
 }
 
 proc = Popen(
-    ["powershell.exe", "Get-ChildItem", "Env:", "|", "Sort", "Name", "|", "Out-File", "-FilePath", "env.txt"],
+    ["powershell.exe", "test.ps1"],
     universal_newlines=True,
     bufsize=0,
     shell=False,
     env=env,
-    stdout=sys.stdout,
 )
 
 proc.wait()
