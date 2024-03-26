@@ -10,4 +10,5 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - run: Get-ChildItem Env:
+      - run: |
+          Get-ChildItem Env: | Sort Name
