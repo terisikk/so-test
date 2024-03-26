@@ -21,4 +21,4 @@ jobs:
           python-version: '3.10'
 
       - run: python test.py
-      - run: Get-Content -Path .\test.txt
+      - run: Get-Content -Path env.txt
