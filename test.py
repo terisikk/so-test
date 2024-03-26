@@ -6,7 +6,7 @@ env = {
 }
 
 proc = Popen(
-    "ls env: > env.txt",
+    "set > filename.txt",
     universal_newlines=True,
     bufsize=0,
     shell=False,
