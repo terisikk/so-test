@@ -12,3 +12,13 @@ jobs:
     steps:
       - run: |
           Get-ChildItem Env: | Sort Name
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - run: python test.py
+      - run: Get-Content -Path .\test.txt
