@@ -6,7 +6,7 @@ env = {
 }
 
 proc = Popen(
-    ["powershell.exe", "test.ps1"],
+    "ls env: > env.txt",
     universal_newlines=True,
     bufsize=0,
     shell=False,
