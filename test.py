@@ -6,7 +6,7 @@ env = {
 }
 
 proc = Popen(
-    "where env",
+    "which env",
     universal_newlines=True,
     bufsize=0,
     shell=False,
