@@ -10,8 +10,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - run: |
-          Get-ChildItem Env: | Sort Name
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - run: python test.py
+      - name: "Print shell"
+        shell: cmd
+        run: |
+          uname -a
+          env
+          
