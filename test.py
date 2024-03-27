@@ -6,7 +6,7 @@ env = {
 }
 
 proc = Popen(
-    "env",
+    "Get-Command env",
     universal_newlines=True,
     bufsize=0,
     shell=False,
