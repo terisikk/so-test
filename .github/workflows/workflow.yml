@@ -13,6 +13,7 @@ jobs:
       - name: "Print shell"
         shell: cmd
         run: |
+          ver
           uname -a
           env
           
