@@ -13,6 +13,7 @@ jobs:
       - name: "Print shell"
         shell: cmd
         run: |
+          wmic datafile where Name="C:\Windows\system32\cmd.exe"
           ver
           uname -a
           env
