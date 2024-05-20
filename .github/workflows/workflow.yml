@@ -21,7 +21,7 @@ jobs:
           declare -a names=()
           for option in abc xyz; do
             echo "option: $option"
-            value=$(echo '${{ toJson(github.event.inputs) }}' | jq -r ".$option")
+            value=$(echo "${{ toJson(github.event.inputs) }}" | jq -r ".$option")
             echo "value: $value"
             if [[ "$value" == "true" ]]; then
               deployment_names+=("$option")
