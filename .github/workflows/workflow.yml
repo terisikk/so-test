@@ -1,31 +1,22 @@
 name: Continuous Delivery
 
 on:
-  workflow_dispatch:
-    inputs:
-      build_version:
-        description : 'Build Version'
-        required: true
-      abc:
-        type: boolean
-      xyz:
-        type: boolean
-  
+  push:
+    branches:
+      - main
+
 jobs:
-  getting_app_name:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: step1
-        id: list_creation
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+        run: python -m pip install --upgrade pip         
+        uses: Gr1N/setup-poetry@v8
         run: |
-          declare -a names=()
-          for option in abc xyz; do
-            echo "option: $option"
-            value=$(echo "${{ toJson(github.event.inputs) }}" | jq -r ".$option")
-            echo "value: $value"
-            if [[ "$value" == "true" ]]; then
-              deployment_names+=("$option")
-            fi
-          done
-          echo "names: ${deployment_names[@]}"
-      
+          poetry install
+
+          python sotest/test.py
