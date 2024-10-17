@@ -18,4 +18,5 @@ jobs:
       - run: |
           poetry install
 
-          poetry run python sotest/test.py
+          which python
+          poetry run which python
