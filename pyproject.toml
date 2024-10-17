@@ -6,6 +6,8 @@ authors = ["Teemu Risikko <teemu.risikko@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+
+[tool.poetry.dev-dependencies]
 requests = "^2.32.3"
 
 
