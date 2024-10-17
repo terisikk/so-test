@@ -6,17 +6,12 @@ on:
       - main
 
 jobs:
-  build:
+  deploy-staging:
     runs-on: ubuntu-latest
+    environment: staging
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.12"
-      - run: python -m pip install --upgrade pip         
-      - uses: Gr1N/setup-poetry@v8
-      - run: |
-          poetry install
+      - uses: actions/checkout@v4
 
-          which python
-          poetry run which python
+      - name: Environment
+        run: |
+          echo "${{ github.environment }}"
