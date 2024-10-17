@@ -14,4 +14,4 @@ jobs:
 
       - name: Environment
         run: |
-          echo "${{ jobs.deploy-staging.environment }}"
+          echo "${{ vars }}"
