@@ -6,13 +6,13 @@ on:
       - main
 
 jobs:
-  deploy-staging:
-    runs-on: ubuntu-latest
-    environment: staging
+  container-test-job:
+    runs-on: 'ubuntu-22.04'
+    container:
+      image: pandoc/latex:3.5
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Environment
-        run: |
-          echo "${{ github.env }}"
-          cat "${{ github.env }}"
+      - uses: actions/checkout@v4  # In order to find the script pandoc.sh
+        with:
+          fetch-depth: 2
+      - name: Run pandoc
+        run: ./pandoc.sh test
