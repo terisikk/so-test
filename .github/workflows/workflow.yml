@@ -12,11 +12,10 @@ jobs:
       image: pandoc/latex:3.5
     steps:
       - uses: actions/checkout@v4  # In order to find the script pandoc.sh
-        with:
-          fetch-depth: 2
       - name: Run pandoc
         run: |
           pwd
           ls -la
+
           echo ${{ github.workspace }}
           ./pandoc.sh test
