@@ -15,4 +15,8 @@ jobs:
         with:
           fetch-depth: 2
       - name: Run pandoc
-        run: ./pandoc.sh test
+        run: |
+          pwd
+          ls -la
+          echo ${{ github.workspace }}
+          ./pandoc.sh test
