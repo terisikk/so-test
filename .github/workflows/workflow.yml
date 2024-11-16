@@ -18,4 +18,4 @@ jobs:
           ls -la
 
           echo ${{ github.workspace }}
-          bash -c "./pandoc.sh test"
+          ./pandoc.sh test
